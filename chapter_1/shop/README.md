@@ -1,0 +1,6 @@
+# README
+
+```
+rails new shop
+```
+
