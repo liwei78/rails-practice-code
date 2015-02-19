@@ -1,5 +1,35 @@
 Rails.application.routes.draw do
-  resources :products
+
+  namespace :admin do
+    resources :products
+  end
+
+  get 'home/index', to: 'home#welcome'
+  get 'home/index'
+  get 'home/welcome', as: :welcome
+
+  get 'home/about'
+
+  get 'home/contact'
+  root 'home#index'
+
+  put '/haha', to: 'home#index'
+  delete '/hehe', to: 'home#index'
+  patch '/wawa', to: 'home#index'
+
+  resources :products, except: [:destroy] do
+    collection do
+      get :top
+    end
+    resources :comments, shallow: true
+  end
+
+  resource :settings
+  resource :profile
+
+  resources :users, only: [:index, :show]
+
+  get '/something/:controller/:name/:action'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -50,9 +80,9 @@ Rails.application.routes.draw do
   #   resources :photos, concerns: :toggleable
 
   # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  namespace :admin do
+    # Directs /admin/products/* to Admin::ProductsController
+    # (app/controllers/admin/products_controller.rb)
+    resources :products
+  end
 end
