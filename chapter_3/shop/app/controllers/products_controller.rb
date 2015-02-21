@@ -6,6 +6,11 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    # respond_to do |format|
+    #   format.html
+    #   format.rss
+    #   format.atom
+    # end
   end
 
   # GET /products/1
@@ -16,10 +21,12 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    render layout: "another_layout"
   end
 
   # GET /products/1/edit
   def edit
+    render layout: false
   end
 
   # POST /products
