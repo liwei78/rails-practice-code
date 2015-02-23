@@ -142,6 +142,13 @@ zh-CN:
       create: 新增%{model}
       submit: 储存%{model}
       update: 更新%{model}
+    links:
+      new: 添加
+      edit: 编辑
+      back: 返回
+      cancel: 取消
+      confirm: 确定
+      destroy: 删除
   number:
     currency:
       format:
