@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "《Rails实践》网店演示" %></title>
+    <%= csrf_meta_tags %>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <%= auto_discovery_link_tag(:rss, {controller: "products", action: "index", format: "rss"}, {title: "RSS Feed"}) %>
+    <%= auto_discovery_link_tag(:atom, {controller: "products", action: "index", format: "atom"}, {title: "ATOM Feed"}) %>
+
+    <%= stylesheet_link_tag "simplex", :media => "all" %>
+
+    <%= yield(:page_stylesheet) if content_for?(:page_stylesheet) %>
+
+  </head>
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to "《Rails实践》", root_path, class: "navbar-brand" %>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><%= link_to "网店首页", root_path %></li>
+            <li><a href="#">我的订单</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">全部分类 <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "分类", root_path %></li>
+                <li><%= link_to "分类", root_path %></li>
+                <li><%= link_to "分类", root_path %></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+      <%= render "flash" %>
+      <%= yield %>
+      <hr>
+      &copy; 2015 <%= link_to "《Rails 实践》", "http://liwei78.gitbooks.io/rails-practice/", target: "_blank" %>网店演示
+    </div>
+
+    <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "simplex" %>
+    <%= yield(:page_javascript) if content_for?(:page_javascript) %>
+  </body>
+</html>
