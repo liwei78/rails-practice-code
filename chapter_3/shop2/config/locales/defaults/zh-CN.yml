@@ -149,6 +149,13 @@ zh-CN:
       cancel: 取消
       confirm: 确定
       destroy: 删除
+      sign_in: 登录
+      sign_up: 注册
+      forgot_password: 找回密码
+    titles:
+      new: 创建%{model}
+      edit: 编辑%{model}
+
   number:
     currency:
       format:

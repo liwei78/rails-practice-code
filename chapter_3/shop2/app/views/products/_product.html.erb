@@ -2,7 +2,7 @@
   <td><%= link_to product.id, product_path(product) %></td>
   <td><%= product.name %></td>
   <td><%= product.description %></td>
-  <td><%= product.price %></td>
+  <td class="text-right"><%= number_to_currency product.price %></td>
   <td><%=l product.created_at %></td>
   <td>
     <%= link_to t('.edit', :default => t("helpers.links.edit")),

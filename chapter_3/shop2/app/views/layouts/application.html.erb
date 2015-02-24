@@ -11,8 +11,8 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
-    <%= auto_discovery_link_tag(:rss, {controller: "products", action: "index", format: "rss"}, {title: "RSS Feed"}) %>
-    <%= auto_discovery_link_tag(:atom, {controller: "products", action: "index", format: "atom"}, {title: "ATOM Feed"}) %>
+    <%= auto_discovery_link_tag(:rss, "/products/index.rss", {title: "RSS Feed"}) %>
+    <%= auto_discovery_link_tag(:atom, "/products/index.atom", {title: "ATOM Feed"}) %>
 
     <%= stylesheet_link_tag "simplex", :media => "all" %>
 
@@ -44,6 +44,19 @@
                 <li><%= link_to "分类", root_path %></li>
               </ul>
             </li>
+          </ul>
+          <%= form_tag(products_path, method: "get", class: "navbar-form navbar-left", role: "search") do %>
+            <%= text_field_tag(:q, params[:q], placeholder: "商品名称", class: "form-control input-sm") %>
+            <%= submit_tag("搜索", class: "btn btn-info btn-sm") %>
+          <% end %>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li><%= link_to current_user.email, profile_path %></li>
+              <li><%= link_to "退出", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "登录", new_user_session_path %></li>
+              <li><%= link_to "注册", new_user_registration_path %></li>
+            <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

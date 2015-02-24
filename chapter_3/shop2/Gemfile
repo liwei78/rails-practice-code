@@ -47,3 +47,6 @@ gem 'therubyracer'
 gem 'twitter-bootswatch-rails'
 gem 'twitter-bootswatch-rails-helpers'
 gem 'bootstrap-sass'
+
+# Chapter 3.2
+gem 'devise'
