@@ -1,0 +1,11 @@
+<tr>
+  <td><%= link_to product.name, product_path(product) %></td>
+  <td><%= product.description %></td>
+  <td class="text-right"><%= number_to_currency product.price %></td>
+  <td><%=l product.created_at %></td>
+  <td>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_product_path(product), :class => 'btn btn-primary btn-xs' %>
+    <%= link_to "删除", product, :method => :delete, :data => { :confirm => "点击确定继续" },:class => 'btn btn-danger btn-xs' %>
+  </td>
+</tr>

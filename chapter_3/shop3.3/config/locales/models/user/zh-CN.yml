@@ -1,0 +1,12 @@
+zh-CN:
+  activerecord:
+    models:
+      user: 用户
+    attributes:
+      user:
+        email: "邮箱"
+        name: "用户名"
+        password: "密码"
+        password_confirmation: "确认密码"
+        remember_me: "记住我"
+        terms: "使用协议"

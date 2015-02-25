@@ -1,0 +1,26 @@
+<%= content_for :page_stylesheet do %>
+<!-- 这是 index.html.erb 里单独使用的 -->
+<% end %>
+
+<%- model_class = Product -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <%= link_to "rss", products_url(format: "rss") %>
+  <%= link_to "atom", products_url(format: "atom") %>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th class="text-right"><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @products %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")), new_product_path, :class => 'btn btn-primary' %>
