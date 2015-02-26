@@ -1,16 +1,5 @@
 <%= form_for @product, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="form-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <%= f.text_field :name, :class => 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :description, :class => 'control-label' %>
-    <%= f.text_field :description, :class => 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :price, :class => 'control-label' %>
-    <%= f.text_field :price, :class => 'form-control' %>
-  </div>
+  <%= render partial: "f", locals: {f: f} %>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary', :data => { :"disable-with" => "请稍等..." } %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")), products_path, :class => 'btn btn-link' %>
