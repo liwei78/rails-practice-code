@@ -12,7 +12,7 @@
     <%= f.text_field :price, :class => 'form-control' %>
   </div>
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= f.submit nil, :class => 'btn btn-primary', :data => { :"disable-with" => "请稍等..." } %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")), products_path, :class => 'btn btn-link' %>
   </div>
 <% end %>
