@@ -18,14 +18,14 @@
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="productsTable">
     <%= render @products %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")), new_product_path, :class => 'btn btn-primary', data: {toggle: "modal", target: "#newProductForm"} %>
+<%= link_to t('.new', :default => t("helpers.links.new")), new_product_path, :class => 'btn btn-primary', data: {toggle: "modal", target: "#productFormModal"} %>
 
-<div class="modal fade" id="newProductForm" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="productFormModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <%= form_for @product, remote: true, :html => { :class => 'form-horizontal' } do |f| %>
       <div class="modal-content">
@@ -47,7 +47,7 @@
 
 <%= content_for :page_javascript do %>
 <script>
-  $('#newProductForm').modal({
+  $('#productFormModal').modal({
     show: false,
   })
 </script>
