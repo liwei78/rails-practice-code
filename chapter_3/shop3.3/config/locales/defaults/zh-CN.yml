@@ -157,6 +157,7 @@ zh-CN:
     titles:
       new: 创建%{model}
       edit: 编辑%{model}
+    actions: 管理
 
   number:
     currency:

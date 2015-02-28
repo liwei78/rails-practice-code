@@ -12,4 +12,5 @@ Rails.application.config.assets.precompile += %w(
   cerulean.js cerulean.css
   united.js united.css
   simplex.js simplex.css
+  products.js
 )

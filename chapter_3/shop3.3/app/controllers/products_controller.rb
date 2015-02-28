@@ -22,6 +22,10 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    respond_to do |format|
+      format.html
+      format.json { render json: @product, status: :ok, location: @product }
+    end
   end
 
   # POST /products
@@ -37,7 +41,7 @@ class ProductsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
-        format.js
+        format.js {render json: @product.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -48,10 +52,10 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
+        format.json
       else
         format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.json { render json: @product.errors.full_messages.join(', '), status: :error }
       end
     end
   end
