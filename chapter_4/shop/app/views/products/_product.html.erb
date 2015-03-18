@@ -1,0 +1,10 @@
+<tr id="product_<%= product.id %>">
+  <td id="product_<%= product.id %>_name"><%= link_to product.name, product_path(product) %></td>
+  <td id="product_<%= product.id %>_description"><%= product.description %></td>
+  <td class="text-right" id="product_<%= product.id %>_price"><%= number_to_currency product.price %></td>
+  <td><%=l product.created_at %></td>
+  <td>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_product_path(product), remote: true, data: { type: 'json' }, :class => 'btn btn-primary btn-xs editProductLink' %>
+    <%= link_to "删除", product, :method => :delete, remote: true, :data => { :confirm => "点击确定继续" }, :class => 'btn btn-danger btn-xs' %>
+  </td>
+</tr>
