@@ -16,17 +16,30 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, :class => 'form-control' %>
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
     <%= error_span(@product[:name]) %>
   </div>
   <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_field :description, :class => 'form-control' %>
+    <%= f.label :price, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :price, :class => 'form-control' %>
+    </div>
+    <%= error_span(@product[:price]) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'form-control' %>
+    </div>
     <%= error_span(@product[:description]) %>
   </div>
+
 
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
             products_path, :class => 'btn btn-default' %>
+
 <% end %>
