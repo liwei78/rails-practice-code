@@ -1,3 +1,0 @@
-// Cerulean
-// Bootswatch
-// bootswatch.js
