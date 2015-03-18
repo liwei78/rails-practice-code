@@ -43,8 +43,11 @@ group :development, :test do
   gem 'spring'
 end
 
+# Bootstrap
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
+
+# Bootswatch
 gem 'twitter-bootswatch-rails'
 gem 'twitter-bootswatch-rails-helpers'
