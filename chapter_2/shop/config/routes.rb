@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :variants
+
   resources :products
 
   # The priority is based upon order of creation: first created -> highest priority.

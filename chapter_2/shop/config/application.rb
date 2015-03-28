@@ -22,5 +22,11 @@ module ShopWithBootstrap
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.generators do |cfg|
+      cfg.stylesheets     false
+      cfg.javascripts     false
+      cfg.helpers         false
+    end
   end
 end
