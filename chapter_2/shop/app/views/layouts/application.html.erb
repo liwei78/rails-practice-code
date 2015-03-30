@@ -44,12 +44,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Shop</a>
+      <%= link_to "Shop", welcome_path, class: "navbar-brand" %>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
-          <li><%= link_to "Link1", "/path1"  %></li>
-          <li><%= link_to "Link2", "/path2"  %></li>
-          <li><%= link_to "Link3", "/path3"  %></li>
+          <li><%= link_to "商品排行", "#"  %></li>
+          <li><%= link_to "我的订单", "#"  %></li>
+          <li><%= link_to "我的信息", edit_profile_path %></li>
         </ul>
       </div>
     </div>

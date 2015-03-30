@@ -12,11 +12,11 @@ RSpec.describe ProductsController, type: :routing do
     end
 
     it "routes to #show" do
-      expect(:get => "/products/1").to route_to("products#show", :id => "1")
+      expect(:get => "/products/A12345").to route_to("products#show", :id => "A12345")
     end
 
     it "routes to #edit" do
-      expect(:get => "/products/1/edit").to route_to("products#edit", :id => "1")
+      expect(:get => "/products/A12345/edit").to route_to("products#edit", :id => "A12345")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ RSpec.describe ProductsController, type: :routing do
     end
 
     it "routes to #update" do
-      expect(:put => "/products/1").to route_to("products#update", :id => "1")
+      expect(:put => "/products/A12345").to route_to("products#update", :id => "A12345")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/products/1").to route_to("products#destroy", :id => "1")
+      expect(:delete => "/products/A12345").to route_to("products#destroy", :id => "A12345")
     end
 
   end
