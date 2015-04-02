@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   # General
-  get 'home/welcome' => 'home#welcome', as: :welcome
+  # get 'home/welcome' => 'home#welcome', as: :welcome
 
   # Resources
-  resources :products, constraints: { id: /[A-Z]\d{5}/ } do
+  resources :products do
     resources :variants, shallow: true
     collection do
       get :top
@@ -33,5 +33,5 @@ Rails.application.routes.draw do
 
 
   # Root
-  root 'home#index'
+  root 'products#index'
 end

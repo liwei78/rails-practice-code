@@ -14,7 +14,7 @@
     <%= auto_discovery_link_tag(:rss, {controller: "products", action: "index", format: "rss"}, {title: "RSS Feed"}) %>
     <%= auto_discovery_link_tag(:atom, {controller: "products", action: "index", format: "atom"}, {title: "ATOM Feed"}) %>
 
-    <%= stylesheet_link_tag "simplex", :media => "all" %>
+    <%= stylesheet_link_tag "simplex" %>
 
     <%= yield(:page_stylesheet) if content_for?(:page_stylesheet) %>
 

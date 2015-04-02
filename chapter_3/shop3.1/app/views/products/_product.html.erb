@@ -3,7 +3,7 @@
   <td><%= product.name %></td>
   <td><%= product.description %></td>
   <td><%= product.price %></td>
-  <td><%=l product.created_at %></td>
+  <td><%= product.created_at %></td>
   <td>
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
                 edit_product_path(product), :class => 'btn btn-primary btn-xs' %>
