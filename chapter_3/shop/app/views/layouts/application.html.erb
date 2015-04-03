@@ -34,7 +34,6 @@
 <!-- Size should be 32 x 32 pixels -->
 <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
-<%= javascript_include_tag "application" %>
 </head>
 <body>
   <div class="navbar navbar-default navbar-static-top">
@@ -58,7 +57,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-9 mb-10">
-        <%= bootstrap_flash %>
+        <%= render "flash" %>
         <%= yield %>
       </div>
       <div class="col-lg-3">
@@ -70,6 +69,7 @@
             <li><%= link_to "Link2", "/path2"  %></li>
             <li><%= link_to "Link3", "/path3"  %></li>
           </ul>
+          <%= image_tag("logo.png") %>
         </div><!--/.well -->
       </div><!--/span-->
     </div><!--/row-->
@@ -80,5 +80,6 @@
       <p class="text-muted text-center">《Rails 实践》<%= link_to "http://rails-practice.com/", "http://rails-practice.com/", target: "_blank" %></p>
     </div>
   </footer>
+<%= javascript_include_tag "application" %>
 </body>
 </html>

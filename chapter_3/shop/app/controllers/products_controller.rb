@@ -15,7 +15,6 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    render layout: false
   end
 
   # GET /products/1/edit
