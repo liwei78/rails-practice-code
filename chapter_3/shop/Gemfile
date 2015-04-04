@@ -53,3 +53,6 @@ gem "twitter-bootstrap-rails"
 # Bootswatch
 gem 'twitter-bootswatch-rails'
 gem 'twitter-bootswatch-rails-helpers'
+
+# MetaSearch
+gem 'ransack'

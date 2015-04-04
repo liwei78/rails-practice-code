@@ -50,6 +50,11 @@
           <li><%= link_to "我的订单", "#"  %></li>
           <li><%= link_to "我的信息", edit_profile_path %></li>
         </ul>
+        <%= form_tag products_path, method: :get, class: "navbar-form navbar-left" do %>
+          <div class="form-group">
+            <%= search_field_tag "q[name_cont]", params["q"] && params["q"]["name_cont"], class: "form-control input-sm search-form", placeholder: "输入商品名称" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
