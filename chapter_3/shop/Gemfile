@@ -56,3 +56,6 @@ gem 'twitter-bootswatch-rails-helpers'
 
 # MetaSearch
 gem 'ransack'
+
+# Authentication
+gem 'devise'

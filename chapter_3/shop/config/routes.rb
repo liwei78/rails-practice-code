@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  # Authentication
+  devise_for :users
+
   # General
 
   # Resources
