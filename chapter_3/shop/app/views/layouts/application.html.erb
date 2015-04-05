@@ -94,6 +94,8 @@
       <p class="text-muted text-center">《Rails 实践》<%= link_to "http://rails-practice.com/", "http://rails-practice.com/", target: "_blank" %></p>
     </div>
   </footer>
+<%= yield(:page_modal) if content_for?(:page_modal) %>
 <%= javascript_include_tag "application" %>
+<%= yield(:page_javascript) if content_for?(:page_javascript) %>
 </body>
 </html>

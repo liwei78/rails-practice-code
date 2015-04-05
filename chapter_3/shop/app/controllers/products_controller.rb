@@ -9,7 +9,9 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @q = Product.ransack(params[:q])
+    @q.sorts = 'id desc' if @q.sorts.empty?
     @products = @q.result(distinct: true)
+    @product = Product.new
   end
 
   # GET /products/1
@@ -24,6 +26,10 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    respond_to do |format|
+      format.html
+      format.json { render json: @product, status: :ok, location: @product }
+    end
   end
 
   # POST /products
@@ -39,6 +45,7 @@ class ProductsController < ApplicationController
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
+      format.js
     end
   end
 
@@ -48,10 +55,10 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
+        format.json
       else
         format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.json { render json: @product.errors.full_messages.join(', '), status: :error }
       end
     end
   end
@@ -63,6 +70,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 
