@@ -36,64 +36,19 @@
 
 </head>
 <body>
-  <div class="navbar navbar-default navbar-static-top">
-    <div class="container">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Shop", root_path, class: "navbar-brand" %>
-      <div class="navbar-collapse collapse navbar-responsive-collapse">
-        <ul class="nav navbar-nav">
-          <li><%= link_to "商品排行", "#"  %></li>
-          <li><%= link_to "我的订单", "#"  %></li>
-          <li><%= link_to "我的信息", edit_profile_path %></li>
-        </ul>
-        <%= form_tag(products_path, method: :get, class: "navbar-form navbar-left") do %>
-          <div class="form-group">
-            <%= search_field_tag "q[name_cont]", params["q"] && params["q"]["name_cont"], class: "form-control input-sm search-form", placeholder: "输入商品名称" %>
-          </div>
-        <% end %>
-        <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-            <li><%= link_to current_user.email, edit_user_registration_path %></li>
-            <li><%= link_to "退出", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to "登录", new_user_session_path %></li>
-            <li><%= link_to "注册", new_user_registration_path %></li>
-          <% end %>
-        </ul>
-      </div>
+<%= render "navbar" %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9 mb-10">
+      <%= render "flash" %>
+      <%= yield %>
     </div>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9 mb-10">
-        <%= render "flash" %>
-        <%= yield %>
-      </div>
-      <div class="col-lg-3">
-        <div class="well sidebar-nav">
-          <h3>Sidebar</h3>
-          <ul class="nav nav-list">
-            <li class="nav-header">Sidebar</li>
-            <li><%= link_to "管理", admin_root_path  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
-            <li><%= link_to "Link3", "/path3"  %></li>
-          </ul>
-          <%= image_tag("logo.png") %>
-        </div><!--/.well -->
-      </div><!--/span-->
-    </div><!--/row-->
-  </div> <!-- /container -->
-
-  <footer class="footer">
-    <div class="container">
-      <p class="text-muted text-center">《Rails 实践》<%= link_to "http://rails-practice.com/", "http://rails-practice.com/", target: "_blank" %></p>
-    </div>
-  </footer>
+    <div class="col-lg-3">
+      <%= render "sider" %>
+    </div><!--/span-->
+  </div><!--/row-->
+</div> <!-- /container -->
+<%= render "footer" %>
 <%= yield(:page_modal) if content_for?(:page_modal) %>
 <%= javascript_include_tag "application" %>
 <%= yield(:page_javascript) if content_for?(:page_javascript) %>

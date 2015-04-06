@@ -59,3 +59,14 @@ gem 'ransack'
 
 # Authentication
 gem 'devise'
+
+# Template Engine
+gem "haml"
+gem "liquid"
+
+# Tool
+gem 'html2haml'
+
+# Advanced
+gem "haml-rails"
+gem "liquid-rails"
