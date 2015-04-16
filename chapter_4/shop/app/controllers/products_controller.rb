@@ -1,12 +1,16 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+
+  # Authentication, except index, show
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @q = Product.ransack(params[:q])
+    @q.sorts = 'id desc' if @q.sorts.empty?
+    @products = @q.result(distinct: true)
     @product = Product.new
   end
 
@@ -37,12 +41,11 @@ class ProductsController < ApplicationController
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
-        format.js
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
-        format.js {render json: @product.errors, status: :unprocessable_entity}
       end
+      format.js
     end
   end
 
@@ -79,6 +82,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :price, :price)
+      params.require(:product).permit(:name, :price, :description)
     end
 end

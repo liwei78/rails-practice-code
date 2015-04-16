@@ -1,10 +1,13 @@
 <tr id="product_<%= product.id %>">
-  <td id="product_<%= product.id %>_name"><%= link_to product.name, product_path(product) %></td>
-  <td id="product_<%= product.id %>_description"><%= product.description %></td>
-  <td class="text-right" id="product_<%= product.id %>_price"><%= number_to_currency product.price %></td>
-  <td><%=l product.created_at %></td>
+  <td id="product_<%= product.id %>_name"><%= link_to product.name, product %></td>
+  <td id="product_<%= product.id %>_price" class="text-right"><%= number_to_currency product.price, unit: "￥" %></td>
   <td>
-    <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_product_path(product), remote: true, data: { type: 'json' }, :class => 'btn btn-primary btn-xs editProductLink' %>
-    <%= link_to "删除", product, :method => :delete, remote: true, :data => { :confirm => "点击确定继续" }, :class => 'btn btn-danger btn-xs' %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_product_path(product), :class => 'btn btn-default btn-xs editProductLink', remote: true, data: { type: 'json' } %>
+    <%= link_to t('.destroy',
+      :default => t("helpers.links.destroy")), product,
+      :remote => true,
+      :method => :delete,
+      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+      :class => 'btn btn-xs btn-danger' %>
   </td>
 </tr>

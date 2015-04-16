@@ -1,4 +1,4 @@
-source 'http://ruby.taobao.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -37,16 +37,36 @@ group :development, :test do
   gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
-  # gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'rspec-rails'
 end
 
-gem 'therubyracer'
+# Bootstrap
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
+
+# Bootswatch
 gem 'twitter-bootswatch-rails'
 gem 'twitter-bootswatch-rails-helpers'
-gem 'bootstrap-sass'
 
-# Chapter 3.2
+# MetaSearch
+gem 'ransack'
+
+# Authentication
 gem 'devise'
+
+# Template Engine
+gem "haml"
+gem "liquid"
+
+# Tool
+gem 'html2haml'
+
+# Advanced
+gem "haml-rails"
+gem "liquid-rails"

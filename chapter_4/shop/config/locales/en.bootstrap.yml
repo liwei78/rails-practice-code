@@ -1,0 +1,29 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  breadcrumbs:
+    application:
+      root: "Index"
+    pages:
+      pages: "Pages"
+  helpers:
+    actions: "Actions"
+    links:
+      back: "返回"
+      cancel: "取消"
+      confirm: "确认"
+      destroy: "删除"
+      new: "添加"
+      edit: "编辑"
+      sign_in: 登录
+      sign_up: 注册
+      update: 更新
+      forgot_password: 找回密码
+      send_password: 发送找回邮件
+      change_password: 修改密码
+    titles:
+      edit: "Edit %{model}"
+      save: "Save %{model}"
+      new: "New %{model}"
+      delete: "Delete %{model}"

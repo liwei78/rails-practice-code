@@ -1,7 +1,10 @@
-<%= form_for @product, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= render partial: "f", locals: {f: f} %>
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary', :data => { :"disable-with" => "请稍等..." } %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), products_path, :class => 'btn btn-link' %>
-  </div>
+<%= form_for @product, :html => { :class => "form" } do |f| %>
+
+  <%= render "errors" %>
+
+  <%= render partial: "input", locals: { f: f } %>
+
+  <%= f.submit nil, :class => 'btn btn-primary', :data => { :"disable-with" => "请稍等..." } %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), products_path, :class => 'btn btn-default' %>
+
 <% end %>

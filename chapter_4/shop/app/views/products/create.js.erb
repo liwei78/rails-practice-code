@@ -1,3 +1,7 @@
-$('#productsTable').prepend('<%= j render(@product) %>');
-$('#newProductFormModal').modal('hide');
-$('#newProductForm')[0].reset();
+<% if @product.errors.any? %>
+  $('#newProductInput').prepend('<%= j render "errors" %>');
+<% else %>
+  $('#productsTable').prepend('<%= j render(@product) %>');
+  $('#newProductFormModal').modal('hide');
+  $('#newProductForm')[0].reset();
+<% end %>

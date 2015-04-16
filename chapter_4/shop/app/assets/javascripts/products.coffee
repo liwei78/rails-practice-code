@@ -7,7 +7,6 @@ jQuery ->
       $('#alert-content').hide()
       $('#editProductFormModal').modal('show')
       $('#editProductName').val(data['name'])
-      $('#editProductDescription').val(data['description'])
       $('#editProductPrice').val(data['price'])
       $("#editProductForm").attr('action', '/products/'+data['id'])
 
@@ -16,7 +15,6 @@ jQuery ->
     .on "ajax:success", (e, data, status, xhr) ->
       $('#editProductFormModal').modal('hide')
       $('#product_'+data['id']+'_name').html(  data['name'] )
-      $('#product_'+data['id']+'_description').html(  data['description'] )
       $('#product_'+data['id']+'_price').html(  data['price'] )
     .on "ajax:error", (e, xhr, status, error) ->
       $('#alert-content').show()

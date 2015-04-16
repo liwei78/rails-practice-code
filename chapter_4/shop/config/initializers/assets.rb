@@ -8,9 +8,4 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w(
-  cerulean.js cerulean.css
-  united.js united.css
-  simplex.js simplex.css
-  products.js
-)
+Rails.application.config.assets.precompile += %w( products.js )
