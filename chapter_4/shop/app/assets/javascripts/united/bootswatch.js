@@ -1,3 +1,0 @@
-// United
-// Bootswatch
-// bootswatch.js

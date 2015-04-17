@@ -1,13 +1,15 @@
-// Set the correct sprite paths
-@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
-@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
-
 // Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
-@fontAwesomeEotPath: font-url("fontawesome-webfont.eot");
-@fontAwesomeEotPath_iefix: font-url("fontawesome-webfont.eot?#iefix");
-@fontAwesomeWoffPath: font-url("fontawesome-webfont.woff");
-@fontAwesomeTtfPath: font-url("fontawesome-webfont.ttf");
-@fontAwesomeSvgPath: font-url("fontawesome-webfont.svg#fontawesomeregular");
+// @fontAwesomeEotPath: font-url("fontawesome-webfont.eot");
+// @fontAwesomeEotPath_iefix: font-url("fontawesome-webfont.eot?#iefix");
+// @fontAwesomeWoffPath: font-url("fontawesome-webfont.woff");
+// @fontAwesomeTtfPath: font-url("fontawesome-webfont.ttf");
+// @fontAwesomeSvgPath: font-url("fontawesome-webfont.svg#fontawesomeregular");
+// Font Awesome
+// @import "fontawesome/font-awesome";
+
+// Set the correct sprite paths
+// @iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+// @iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
 
 @font-face {
    font-family: 'Glyphicons Halflings';
@@ -17,12 +19,8 @@
       font-url('glyphicons-halflings-regular.ttf') format('truetype'),
       font-url('glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
-
-// Font Awesome
-@import "fontawesome/font-awesome";
-
 // Glyphicons
-//@import "twitter/bootstrap/glyphicons.less";
+// @import "twitter/bootstrap/glyphicons.less";
 
 // Your custom LESS stylesheets goes here
 //
@@ -76,4 +74,8 @@ body {
   .search-form {
     margin-top: 3px;
   }
+}
+
+.modal-dialog {
+  z-index: 9999;
 }
