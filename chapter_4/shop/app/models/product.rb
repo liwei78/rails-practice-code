@@ -1,6 +1,5 @@
 class Product < ActiveRecord::Base
   validates :name, presence: true
-  has_many :variants
-  scope :hot, -> {}
-  scope :top, -> {}
+  scope :hot, -> { where(hot: true) }
+  scope :top, -> { where(top: true) }
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430173454) do
+ActiveRecord::Schema.define(version: 20150602124315) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
@@ -30,44 +30,14 @@ ActiveRecord::Schema.define(version: 20150430173454) do
 
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id"
 
-  create_table "option_types", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "option_values", force: :cascade do |t|
-    t.integer  "position"
-    t.string   "name"
-    t.integer  "option_type_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  add_index "option_values", ["option_type_id"], name: "index_option_values_on_option_type_id"
-
-  create_table "option_values_variants", id: false, force: :cascade do |t|
-    t.integer "option_value_id", null: false
-    t.integer "variant_id",      null: false
-  end
-
-  create_table "product_option_types", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "option_type_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  add_index "product_option_types", ["option_type_id"], name: "index_product_option_types_on_option_type_id"
-  add_index "product_option_types", ["product_id"], name: "index_product_option_types_on_product_id"
-
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.decimal  "price"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "top"
+    t.boolean  "hot"
   end
 
   create_table "users", force: :cascade do |t|
