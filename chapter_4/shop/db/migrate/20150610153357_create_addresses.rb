@@ -7,7 +7,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :address
       t.string :address2
       t.string :zipcode
-      t.string :reveiver
+      t.string :receiver
       t.string :phone
 
       t.timestamps null: false
