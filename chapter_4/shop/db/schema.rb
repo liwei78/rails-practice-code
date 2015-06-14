@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610153357) do
+ActiveRecord::Schema.define(version: 20150613074050) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
@@ -27,6 +27,38 @@ ActiveRecord::Schema.define(version: 20150610153357) do
   end
 
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id"
+
+  create_table "catalogs", force: :cascade do |t|
+    t.integer  "parent_catalog_id"
+    t.string   "name"
+    t.boolean  "parent"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "catalogs", ["parent_catalog_id"], name: "index_catalogs_on_parent_catalog_id"
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "variant_id"
+    t.integer  "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
+  add_index "line_items", ["variant_id"], name: "index_line_items_on_variant_id"
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "number"
+    t.string   "payment_state"
+    t.string   "shipment_state"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -55,10 +87,18 @@ ActiveRecord::Schema.define(version: 20150610153357) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "orders_count"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "users_variants", id: false, force: :cascade do |t|
+    t.integer "user_id",    null: false
+    t.integer "variant_id", null: false
+  end
+
+  add_index "users_variants", ["variant_id", "user_id"], name: "index_users_variants_on_variant_id_and_user_id", unique: true
 
   create_table "variants", force: :cascade do |t|
     t.integer  "product_id"
