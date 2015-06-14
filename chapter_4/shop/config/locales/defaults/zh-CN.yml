@@ -1,13 +1,14 @@
+---
 zh-CN:
   date:
     abbr_day_names:
-    - 日
-    - 一
-    - 二
-    - 三
-    - 四
-    - 五
-    - 六
+    - 周日
+    - 周一
+    - 周二
+    - 周三
+    - 周四
+    - 周五
+    - 周六
     abbr_month_names:
     -
     - 1月
@@ -31,9 +32,9 @@ zh-CN:
     - 星期五
     - 星期六
     formats:
-      default: ! '%Y-%m-%d'
-      long: ! '%Y年%b%d日'
-      short: ! '%b%d日'
+      default: "%Y-%m-%d"
+      long: "%Y年%b%d日"
+      short: "%b%d日"
     month_names:
     -
     - 一月
@@ -75,19 +76,19 @@ zh-CN:
         other: 不到 %{count} 秒
       over_x_years:
         one: 一年多
-        other: ! '%{count} 年多'
+        other: "%{count} 年多"
       x_days:
         one: 一天
-        other: ! '%{count} 天'
+        other: "%{count} 天"
       x_minutes:
         one: 一分钟
-        other: ! '%{count} 分钟'
+        other: "%{count} 分钟"
       x_months:
         one: 一个月
-        other: ! '%{count} 个月'
+        other: "%{count} 个月"
       x_seconds:
         one: 一秒
-        other: ! '%{count} 秒'
+        other: "%{count} 秒"
     prompts:
       day: 日
       hour: 时
@@ -95,13 +96,13 @@ zh-CN:
       month: 月
       second: 秒
       year: 年
-  errors: &errors
-    format: ! '%{attribute}%{message}'
+  errors:
+    format: "%{attribute}%{message}"
     messages:
       accepted: 必须是可被接受的
       blank: 不能为空字符
       present: 必须是空白
-      confirmation: 与之前输入不匹配
+      confirmation: 与确认值不匹配
       empty: 不能留空
       equal_to: 必须等于 %{count}
       even: 必须为双数
@@ -115,10 +116,10 @@ zh-CN:
       not_a_number: 不是数字
       not_an_integer: 必须是整数
       odd: 必须为单数
-      record_invalid: ! '验证失败: %{errors}'
+      record_invalid: '验证失败: %{errors}'
       restrict_dependent_destroy:
-        one: 由於 %{record} 需要此记录，所以无法移除记录
-        many: 由於 %{record} 需要此记录，所以无法移除记录
+        one: 由于 %{record} 需要此记录，所以无法移除记录
+        many: 由于 %{record} 需要此记录，所以无法移除记录
       taken: 已经被使用
       too_long:
         one: 过长（最长为一个字符）
@@ -142,42 +143,25 @@ zh-CN:
       create: 新增%{model}
       submit: 储存%{model}
       update: 更新%{model}
-    links:
-      new: 添加
-      edit: 编辑
-      back: 返回
-      cancel: 取消
-      confirm: 确定
-      destroy: 删除
-      sign_in: 登录
-      sign_up: 注册
-      forgot_password: 找回密码
-      send_password: 发送找回邮件
-      change_password: 修改密码
-    titles:
-      new: 创建%{model}
-      edit: 编辑%{model}
-    actions: 管理
-
   number:
     currency:
       format:
-        delimiter: ! ','
-        format: ! '%u %n'
+        delimiter: ","
+        format: "%u %n"
         precision: 2
-        separator: .
+        separator: "."
         significant: false
         strip_insignificant_zeros: false
         unit: CN¥
     format:
-      delimiter: ! ','
+      delimiter: ","
       precision: 3
-      separator: .
+      separator: "."
       significant: false
       strip_insignificant_zeros: false
     human:
       decimal_units:
-        format: ! '%n %u'
+        format: "%n %u"
         units:
           billion: 十亿
           million: 百万
@@ -191,7 +175,7 @@ zh-CN:
         significant: false
         strip_insignificant_zeros: false
       storage_units:
-        format: ! '%n %u'
+        format: "%n %u"
         units:
           byte:
             one: Byte
@@ -208,21 +192,13 @@ zh-CN:
         delimiter: ''
   support:
     array:
-      last_word_connector: ! ', 和 '
-      two_words_connector: ! ' 和 '
-      words_connector: ! ', '
+      last_word_connector: ", 和 "
+      two_words_connector: " 和 "
+      words_connector: ", "
   time:
     am: 上午
     formats:
-      default: ! '%Y年%b%d日 %A %H:%M:%S'
-      long: ! '%Y年%b%d日 %H:%M'
-      short: ! '%b%d日 %H:%M'
+      default: "%Y年%b%d日 %A %H:%M:%S"
+      long: "%Y年%b%d日 %H:%M"
+      short: "%b%d日 %H:%M"
     pm: 下午
-  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
-  activemodel:
-    errors:
-      <<: *errors
-  activerecord:
-    errors:
-      <<: *errors
-
