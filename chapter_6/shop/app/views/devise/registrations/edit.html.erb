@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <% resource.build_address if resource.address.nil? %>
+
+      <%= devise_error_messages! %>
+
+      <div class="form-group">
+        <%= f.label :email, class: "control-label" %><br />
+        <%= f.email_field :email, class: "form-control" %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :password, class: "control-label" %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, class: "control-label" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :current_password, class: "control-label" %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.password_field :current_password, autofocus: true, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <%= f.fields_for :address do |address_form| %>
+        <hr>
+        <div class="form-group">
+          <%= address_form.label :state, class: "control-label" %><br />
+          <%= address_form.text_field :state, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= address_form.label :city, class: "control-label" %><br />
+          <%= address_form.text_field :city, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= address_form.label :address, class: "control-label" %><br />
+          <%= address_form.text_field :address, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= address_form.label :address2, class: "control-label" %><br />
+          <%= address_form.text_field :address2, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= address_form.label :zipcode, class: "control-label" %><br />
+          <%= address_form.text_field :zipcode, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= address_form.label :receiver, class: "control-label" %><br />
+          <%= address_form.text_field :receiver, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= address_form.label :phone, class: "control-label" %><br />
+          <%= address_form.text_field :phone, class: "form-control" %>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.submit t("helpers.links.update"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <%= render "shared/intro" %>
+  </div>
+</div>
