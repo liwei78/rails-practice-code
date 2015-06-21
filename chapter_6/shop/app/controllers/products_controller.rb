@@ -5,6 +5,9 @@ class ProductsController < ApplicationController
 
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+  # caches_page :show
+  # caches_action :index, layout: false
+
   # GET /products
   # GET /products.json
   def index
@@ -54,6 +57,8 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
+        expire_page action: 'show', id: @product.id
+        expire_fragment :all
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json
       else

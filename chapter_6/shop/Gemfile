@@ -62,3 +62,7 @@ gem 'ransack'
 
 # Authentication
 gem 'devise'
+
+# Cache
+gem 'actionpack-page_caching'
+gem 'actionpack-action_caching'
