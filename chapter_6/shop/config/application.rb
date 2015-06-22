@@ -32,5 +32,8 @@ module ShopWithBootstrap
     config.action_view.field_error_proc = Proc.new { |html_tag, instance|
       "<div class=\"field_with_errors control-group  has-error has-feedback\">#{html_tag}<span class=\"glyphicon glyphicon-remove form-control-feedback\" aria-hidden=\"true\"></span><span id=\"inputError2Status\" class=\"sr-only\">(error)</span></div>".html_safe
     }
+
+    config.active_job.queue_adapter = :sidekiq
+
   end
 end

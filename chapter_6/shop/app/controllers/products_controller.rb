@@ -5,8 +5,8 @@ class ProductsController < ApplicationController
 
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
-  # caches_page :show
-  # caches_action :index, layout: false
+  caches_page :show
+  caches_action :index, layout: false
 
   # GET /products
   # GET /products.json

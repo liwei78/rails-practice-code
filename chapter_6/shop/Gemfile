@@ -66,3 +66,8 @@ gem 'devise'
 # Cache
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
+
+# ActiveJob
+gem 'sidekiq'
+# Sidekiq Web
+gem 'sinatra', :require => nil
