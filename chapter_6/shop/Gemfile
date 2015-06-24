@@ -71,3 +71,9 @@ gem 'actionpack-action_caching'
 gem 'sidekiq'
 # Sidekiq Web
 gem 'sinatra', :require => nil
+
+# App server
+gem 'puma'
+
+# Deployment
+gem 'mina', group: :development
