@@ -77,3 +77,6 @@ gem 'puma'
 
 # Deployment
 gem 'mina', group: :development
+
+# Crontab
+gem 'whenever', :require => false
