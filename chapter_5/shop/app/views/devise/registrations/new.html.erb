@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="form-group">
+        <%= f.label :email, class: "control-label" %>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, class: "control-label" %>
+        <% if @validatable %>
+        <em>(至少 <%= @minimum_password_length %> 个字符)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, class: "control-label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit t("helpers.links.sign_up"), class: "btn btn-primary" %>
+        <%= link_to t("helpers.links.forgot_password"), new_password_path(resource_name), class: "btn btn-link" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <%= render "shared/intro" %>
+  </div>
+</div>
