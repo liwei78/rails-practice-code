@@ -50,5 +50,8 @@ Rails.application.configure do
   #   enable_starttls_auto: true
   # }
 
-  config.cache_store = :null_store
+  config.cache_store = :memory_store
+
+  config.serve_static_files = true
+  config.static_cache_control = 'public, max-age=31536000'
 end

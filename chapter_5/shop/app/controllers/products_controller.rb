@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
-
   # Authentication, except index, show
   skip_before_action :authenticate_user!, only: [:index, :show]
-
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+
+  etag { current_user.try(:id) }
 
   # GET /products
   # GET /products.json
@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    fresh_when(@product)
   end
 
   # GET /products/new
@@ -45,8 +46,6 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        expire_page action: 'show', id: @product.id
-        expire_fragment :all
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json
       else
