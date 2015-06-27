@@ -76,3 +76,6 @@ gem 'mina', group: :development
 
 # Crontab
 gem 'whenever', :require => false
+
+# Respond_with
+gem "responders"
