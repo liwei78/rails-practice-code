@@ -1,0 +1,53 @@
+<%- model_class = Product -%>
+<div class="page-header">
+  <h1>收货地址</h1>
+</div>
+
+<%= form_for @address, url: confirm_path do |f| %>
+  <div class="row">
+    <div class="col col-md-8">
+      <div class="form-group">
+        <%= f.label :state, class: "control-label" %><br />
+        <%= f.text_field :state, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :city, class: "control-label" %><br />
+        <%= f.text_field :city, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :address, class: "control-label" %><br />
+        <%= f.text_field :address, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :address2, class: "control-label" %><br />
+        <%= f.text_field :address2, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :zipcode, class: "control-label" %><br />
+        <%= f.text_field :zipcode, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :receiver, class: "control-label" %><br />
+        <%= f.text_field :receiver, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :phone, class: "control-label" %><br />
+        <%= f.text_field :phone, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-footer">
+          <%= submit_tag "下一步", :class => 'btn btn-info btn-block'  %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+

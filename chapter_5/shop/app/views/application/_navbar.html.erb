@@ -22,6 +22,7 @@
       <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+          <li><%= link_to "购物车中有 #{current_user.cart_items.sum(:quantity)} 个商品", cart_path %></li>
           <li><%= link_to current_user.email, edit_user_registration_path %></li>
           <li><%= link_to "退出", destroy_user_session_path, method: :delete %></li>
         <% else %>

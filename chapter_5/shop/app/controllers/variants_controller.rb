@@ -1,5 +1,5 @@
 class VariantsController < ApplicationController
-  before_action :set_variant, only: [:show, :edit, :update, :destroy]
+  before_action :set_variant, only: [:show, :edit, :update, :destroy, :buy]
 
   # GET /variants
   # GET /variants.json

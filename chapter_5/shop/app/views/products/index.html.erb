@@ -5,8 +5,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th width="60%"><%= model_class.human_attribute_name(:name) %></th>
+      <th width="40%"><%= model_class.human_attribute_name(:name) %></th>
       <th width="20%" class="text-right"><%= model_class.human_attribute_name(:price) %></th>
+      <th width="20%"></th>
       <th width="20%"><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>

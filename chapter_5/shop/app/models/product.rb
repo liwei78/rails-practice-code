@@ -3,4 +3,5 @@ class Product < ActiveRecord::Base
   scope :hot, -> { where(hot: true) }
   scope :top, -> { where(top: true) }
   has_many :variants
+  accepts_nested_attributes_for :variants
 end

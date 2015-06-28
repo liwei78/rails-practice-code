@@ -4,8 +4,9 @@ class Order < ActiveRecord::Base
   has_many :variants, through: :line_items
   validates :number, presence: true
 
-  after_create :send_create_email
-  def send_create_email
-    OrderCreateJob.perform_later(self)
-  end
+  # 第六章内容
+  # after_create :send_create_email
+  # def send_create_email
+  #   OrderCreateJob.perform_later(self)
+  # end
 end

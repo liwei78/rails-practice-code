@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   # Authentication, except index, show
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :buy]
 
   load_and_authorize_resource
 
@@ -65,6 +65,13 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
       format.js
     end
+  end
+
+  def buy
+    @variant = @product.variants.find(params[:variant_id])
+    cart_item = CartItem.find_or_create_by(variant: @variant, user: current_user)
+    cart_item.increment!(:quantity, params[:quantity].to_i)
+    redirect_to @product, notice: "已添加到购物车"
   end
 
   private
