@@ -79,3 +79,6 @@ gem 'whenever', :require => false
 
 # Respond_with
 gem "responders"
+
+# Ability
+gem 'cancancan', '~> 1.10'

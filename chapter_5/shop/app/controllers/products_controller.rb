@@ -3,6 +3,8 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+  load_and_authorize_resource
+
   etag { current_user.try(:id) }
 
   # GET /products
@@ -37,7 +39,6 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.create(product_params)
-
     respond_with(@product)
   end
 

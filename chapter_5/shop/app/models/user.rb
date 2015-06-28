@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :line_items, through: :orders
   has_and_belongs_to_many :variants
+
+  def admin?
+    role == "admin"
+  end
 end
