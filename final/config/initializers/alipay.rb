@@ -1,0 +1,2 @@
+Alipay.pid = ''
+Alipay.key = ''

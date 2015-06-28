@@ -1,0 +1,63 @@
+<%- model_class = Product -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<div class="panel panel-default">
+  <table class="table">
+    <tr>
+      <td width="10%"><strong><%= model_class.human_attribute_name(:name) %>:</strong></td>
+      <td><%= @product.name %></td>
+    </tr>
+    <tr>
+      <td><strong><%= model_class.human_attribute_name(:description) %>:</strong></td>
+      <td><%= @product.description %></td>
+    </tr>
+  </table>
+</div>
+
+<%= form_tag buy_product_path(@product) do %>
+  <div class="row">
+    <div class="col col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading product-section-title">选择您想购买的商品</div>
+        <ul class="list-group">
+          <% @product.variants.each_with_index do |variant, index| %>
+            <li class="list-group-item">
+              <label>
+                <%= radio_button_tag "variant_id", variant.id, index == 0 %>
+                <%= variant.size %>
+                <%= number_to_currency variant.price %>
+              </label>
+            </li>
+          <% end%>
+        </ul>
+      </div>
+    </div>
+    <div class="col col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body input-group">
+          <%= number_field_tag :quantity, 1, :class => 'form-control', :min => 1, style: "text-align: center;" %>
+          <span class="input-group-btn">
+            <%= button_tag :class => 'btn btn-success', :type => :submit do %>
+              添加到购物车
+            <% end %>
+          </span>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "查看购物车", cart_path, :class => 'btn btn-info btn-block'  %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              products_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_product_path(@product), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              product_path(@product),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

@@ -1,0 +1,34 @@
+<div class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to "Shop", root_path, class: "navbar-brand" %>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "商品排行", top_products_path %></li>
+        <li><%= link_to "我的订单", orders_path %></li>
+      </ul>
+      <%= form_tag(products_path, method: :get, class: "navbar-form navbar-left search-form") do %>
+        <div class="input-group">
+          <%= search_field_tag "q[name_cont]", params["q"] && params["q"]["name_cont"], class: "form-control input-sm", placeholder: "输入商品名称" %>
+          <span class="input-group-btn">
+            <button class="btn btn-primary btn-sm" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+          </span>
+        </div>
+      <% end %>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><%= link_to "购物车中有 #{current_user.cart_items.sum(:quantity)} 个商品", cart_path %></li>
+          <li><%= link_to current_user.email, edit_user_registration_path %></li>
+          <li><%= link_to "退出", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "登录", new_user_session_path %></li>
+          <li><%= link_to "注册", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

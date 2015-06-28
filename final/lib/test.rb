@@ -1,0 +1,1 @@
+p Product.all

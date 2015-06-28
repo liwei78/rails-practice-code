@@ -1,0 +1,91 @@
+<%- model_class = Product -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="40%"><%= model_class.human_attribute_name(:name) %></th>
+      <th width="20%" class="text-right"><%= model_class.human_attribute_name(:price) %></th>
+      <th width="20%"></th>
+      <th width="20%"><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody id="productsTable">
+    <%= render @products %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_product_path,
+            :class => 'btn btn-primary',
+            data: {toggle: "modal", target: "#newProductFormModal"} %>
+
+<%= content_for :page_modal do %>
+  <div class="modal fade" id="newProductFormModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <%= form_for @product, remote: true, :html => { :class => 'form', id: "newProductForm" } do |f| %>
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">添加一个商品</h4>
+          </div>
+          <div class="modal-body" id="newProductInput">
+            <%= render partial: "input", locals: { f: f } %>
+          </div>
+          <div class="modal-footer">
+            <%= link_to t('.cancel', :default => t("helpers.links.cancel")), '#', :class => 'btn btn-default', data: {dismiss: "modal"} %>
+            <%= f.submit nil, :class => 'btn btn-primary', :data => { :"disable-with" => "请稍等..." } %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editProductFormModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <%= form_tag "", method: :put, remote: true, data: { type: "json" }, id: "editProductForm", class: "form" do %>
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">编辑一个商品</h4>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-dismissible alert-danger" id="alert-content">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <div id="msg"></div>
+            </div>
+            <div class="form-group">
+              <%= label_tag "product[name]", Product.human_attribute_name("name"), :class => 'control-label' %>
+              <%= text_field_tag "product[name]", "", :class => 'form-control', id: "editProductName" %>
+            </div>
+            <div class="form-group">
+              <%= label_tag "product[description]", Product.human_attribute_name("description"), :class => 'control-label' %>
+              <%= text_field_tag "product[description]", "", :class => 'form-control', id: "editProductDescription" %>
+            </div>
+            <div class="form-group">
+              <%= label_tag "product[price]", Product.human_attribute_name("price"), :class => 'control-label' %>
+              <%= text_field_tag "product[price]", "", :class => 'form-control', id: "editProductPrice" %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <%= link_to t('.cancel', :default => t("helpers.links.cancel")), '#', :class => 'btn btn-default', data: {dismiss: "modal"} %>
+            <%= submit_tag t('.confirm', :default => t("helpers.links.confirm")), :class => 'btn btn-primary', :data => { :"disable-with" => "请稍等..." } %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%= content_for :page_javascript do %>
+  <%= javascript_include_tag "products" %>
+  <script>
+    $('#newProductFormModal').modal({
+      show: false,
+    })
+    $('#editProductFormModal').modal({
+      show: false,
+    })
+  </script>
+<% end %>

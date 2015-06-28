@@ -1,0 +1,5 @@
+<p>欢迎 <%= @email %>!</p>
+
+<p>请点击下面的确认链接，验证您的邮箱！</p>
+
+<p><%= link_to '验证我的邮箱', confirmation_url(@resource, confirmation_token: @token) %></p>

@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>我的订单</h1>
+</div>
+
+<div class="panel panel-default">
+  <table class="table">
+    <thead>
+      <tr>
+        <th width="50%">订单</th>
+        <th width="10%">总额</th>
+        <th width="10%">状态</th>
+        <th width="20%">创建时间</th>
+        <th width="10%"></th>
+      </tr>
+    </thead>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.number, order %></td>
+        <td><%= number_to_currency order.line_items.map{|i| i.quantity * i.variant_price}.sum %></td>
+        <td><%= order.payment_state %></td>
+        <td><%= order.created_at.to_date %></td>
+        <td><%= link_to "支付", pay_path(number: order.number), method: :post if order.payment_state == "confirm" %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="well">
+  <%= page_entries_info @orders %>
+</div>
+<%= will_paginate @orders, renderer: BootstrapPagination::Rails %>
+
