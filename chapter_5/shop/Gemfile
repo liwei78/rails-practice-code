@@ -82,3 +82,10 @@ gem "responders"
 
 # Ability
 gem 'cancancan', '~> 1.10'
+
+# Alipay
+gem 'alipay', '~> 0.7.1'
+
+# Paginate
+# gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate-bootstrap'

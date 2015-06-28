@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :line_items, through: :orders
   has_and_belongs_to_many :variants
-  has_many :cart_items, -> { order(updated_at: :desc) }
+  has_many :cart_items, -> { includes(:variant).order("cart_items.updated_at asc") }
 
   def admin?
     role == "admin"

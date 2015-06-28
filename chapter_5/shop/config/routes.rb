@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get "/address", to: 'checkout#address', as: :address
   patch "/confirm", to: 'checkout#confirm', as: :confirm
   post "/:number/pay", to: 'checkout#pay', as: :pay
-  get "/notify", to: 'checkout#notify', as: :notify
+  get "/:number/notify", to: 'checkout#notify', as: :notify
 
   # Profile
   resource :profile, only: [:show, :edit, :update]

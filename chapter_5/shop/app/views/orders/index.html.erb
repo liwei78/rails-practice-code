@@ -1,25 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1>我的订单</h1>
+</div>
 
-<h1>Listing Orders</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="panel panel-default">
+  <table class="table">
+    <thead>
+      <tr>
+        <th width="50%">订单</th>
+        <th width="10%">总额</th>
+        <th width="10%">状态</th>
+        <th width="20%">创建时间</th>
+        <th width="10%"></th>
+      </tr>
+    </thead>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to order.number, order %></td>
+        <td><%= number_to_currency order.line_items.map{|i| i.quantity * i.variant_price}.sum %></td>
+        <td><%= order.payment_state %></td>
+        <td><%= order.created_at.to_date %></td>
+        <td><%= link_to "支付", pay_path(number: order.number), method: :post if order.payment_state == "confirm" %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+  </table>
+</div>
 
-<br>
+<div class="well">
+  <%= page_entries_info @orders %>
+</div>
+<%= will_paginate @orders, renderer: BootstrapPagination::Rails %>
 
-<%= link_to 'New Order', new_order_path %>

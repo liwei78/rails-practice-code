@@ -10,3 +10,4 @@ zh-CN:
         password_confirmation: "确认密码"
         remember_me: "记住我"
         terms: "使用协议"
+        current_password: "当前密码"

@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   # Authentication, except index, show
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :top]
   before_action :set_product, only: [:show, :edit, :update, :destroy, :buy]
 
   load_and_authorize_resource
@@ -14,6 +14,12 @@ class ProductsController < ApplicationController
     @q.sorts = 'id desc' if @q.sorts.empty?
     @products = @q.result(distinct: true)
     @product = Product.new
+  end
+
+  def top
+    @products = Product.top
+    @product = Product.new
+    render template: "products/index"
   end
 
   # GET /products/1

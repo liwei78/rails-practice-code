@@ -3,39 +3,42 @@
   <h1>购物车</h1>
 </div>
 
-<%= form_tag checkout_path do %>
-  <div class="row">
-    <div class="col col-md-8">
-      <div class="panel panel-default">
-        <table class="table">
-          <thead>
-            <tr>
-              <th width="50%">商品</th>
-              <th width="10%">大小</th>
-              <th class="text-right" width="10%">价格</th>
-              <th width="10%">数量</th>
-              <th width="20%" class="text-right">合计</th>
-            </tr>
-          </thead>
-          <% @cart_items.each do |item| %>
-            <tr>
-              <td><%= item.variant.product.name %></td>
-              <td><%= item.variant.size %></td>
-              <td class="text-right"><%= item.variant.price %></td>
-              <td><%= item.quantity %></td>
-              <td class="text-right"><%= number_to_currency item.quantity * item.variant.price %></td>
-            </tr>
-          <% end %>
-        </table>
+<% if @cart_items.empty? %>
+  购物车为空
+<% else %>
+  <%= form_tag checkout_path do %>
+    <div class="row">
+      <div class="col col-md-8">
+        <div class="panel panel-default">
+          <table class="table">
+            <thead>
+              <tr>
+                <th width="50%">商品</th>
+                <th width="10%">大小</th>
+                <th class="text-right" width="10%">价格</th>
+                <th width="10%">数量</th>
+                <th width="20%" class="text-right">合计</th>
+              </tr>
+            </thead>
+            <% @cart_items.each do |item| %>
+              <tr>
+                <td><%= item.variant.product.name %></td>
+                <td><%= item.variant.size %></td>
+                <td class="text-right"><%= item.variant.price %></td>
+                <td><%= text_field_tag "item[#{item.id}][quantity]", item.quantity %></td>
+                <td class="text-right"><%= number_to_currency item.quantity * item.variant.price %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
       </div>
-    </div>
-    <div class="col col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-footer">
-          <%= submit_tag "确认收货地址", :class => 'btn btn-info btn-block'  %>
+      <div class="col col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-footer">
+            <%= submit_tag "确认收货地址", :class => 'btn btn-info btn-block'  %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
-
