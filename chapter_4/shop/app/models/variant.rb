@@ -4,6 +4,8 @@ class Variant < ActiveRecord::Base
   has_many :orders, through: :line_item
   has_and_belongs_to_many :users
 
+  validates :price, :size, presence: true
+
   after_touch :test_touch
   def test_touch
     puts 'Variant was touched'

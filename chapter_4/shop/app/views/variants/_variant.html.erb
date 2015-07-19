@@ -1,0 +1,12 @@
+<tr id="variant_<%= variant.id %>">
+  <td><%= variant.price %></td>
+  <td><%= variant.size %></td>
+  <td>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_product_variant_path(@product, variant), :class => 'btn btn-default btn-xs' %>
+    <%= link_to t('.destroy',
+      :default => t("helpers.links.destroy")), product_variant_path(@product, variant),
+      :method => :delete,
+      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+      :class => 'btn btn-xs btn-danger' %>
+  </td>
+</tr>

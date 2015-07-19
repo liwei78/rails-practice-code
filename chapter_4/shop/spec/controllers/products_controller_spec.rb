@@ -36,6 +36,8 @@ RSpec.describe ProductsController, type: :controller do
   # ProductsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  login_user
+
   describe "GET #index" do
     it "assigns all products as @products" do
       product = Product.create! valid_attributes

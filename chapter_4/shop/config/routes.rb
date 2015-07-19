@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # Resources
   resources :products do
-    resources :variants, shallow: true
+    resources :variants
     collection do
       get :top
     end

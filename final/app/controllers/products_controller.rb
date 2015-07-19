@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :top]
   before_action :set_product, only: [:show, :edit, :update, :destroy, :buy]
 
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:buy]
 
   etag { current_user.try(:id) }
 

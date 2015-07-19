@@ -15,5 +15,4 @@
   <%= @variant.size %>
 </p>
 
-<%= link_to 'Edit', edit_variant_path(@variant) %> |
-<%= link_to 'Back', variants_path %>
+<%= link_to 'Edit', edit_product_variant_path(@product, @variant) %> | <%= link_to 'Variants', product_variants_path(@product) %>

@@ -1,12 +1,10 @@
 zh-CN:
   activerecord:
     models:
-      product: 商品
+      variant: 商品类型
     attributes:
-      product:
-        name: 名称
-        description: 描述
+      variant:
         price: 价格
+        size: 大小
         created_at: 添加日期
         updated_at: 更新日期
-        variants: 商品类型
