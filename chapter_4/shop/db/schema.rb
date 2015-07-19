@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613074050) do
+ActiveRecord::Schema.define(version: 20150719071616) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 20150613074050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "color"
+    t.integer  "on_hand"
   end
 
   add_index "variants", ["product_id"], name: "index_variants_on_product_id"
