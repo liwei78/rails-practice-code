@@ -30,6 +30,7 @@
       </div>
 
       <%= f.fields_for :address do |address_form| %>
+        <%= address_form.hidden_field :id %>
         <hr>
         <div class="form-group">
           <%= address_form.label :state, class: "control-label" %><br />

@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :address, inverse_of: :user
-  accepts_nested_attributes_for :address, update_only: true
+  # accepts_nested_attributes_for :address, update_only: true
+  accepts_nested_attributes_for :address, allow_destroy: true
 
   has_many :orders
   has_many :line_items, through: :orders
