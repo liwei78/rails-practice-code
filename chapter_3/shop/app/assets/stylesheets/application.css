@@ -12,8 +12,6 @@
  *
  *
  *= require_self
- *= require simplex/loader
- *= require simplex/bootswatch
  *= require bootstrap_and_overrides
  *
  */
